@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_003818) do
+ActiveRecord::Schema.define(version: 2019_05_22_225155) do
+
+  create_table "hikes", force: :cascade do |t|
+    t.string "name"
+    t.string "summary"
+    t.string "difficulty"
+    t.string "location"
+    t.float "length"
+    t.string "img_url"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "hike_id"
+    t.integer "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

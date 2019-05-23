@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :hikes
   get 'home/index'
   devise_for :users
   authenticated :user do
