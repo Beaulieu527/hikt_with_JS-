@@ -1,0 +1,31 @@
+<img class="card-img-top" src="<%=@hike.img_url%>" alt=""></a>
+                    <div class="card-body">
+                        <h1 class="card-title"><%=@hike.name%></h1>
+                        <p class="card-text"><strong>Summary:</strong><%=@hike.summary%></p>
+                        <p class="card-text"><strong>Location:</strong><%=@hike.location%></p>
+                        <p class="card-text"><strong>Length:</strong><%=@hike.length%>mi.</p>
+                        <br>
+                        <br>
+                        <form action="/hikes/<%=@hike.id%>" method= 'post'>
+                            <input type='hidden' name='_method' value='delete'>
+                            <input class="btn btn-danger" type='submit' value='Delete Hike' id= 'Delete Hike'>
+                        </form>
+                        <br>
+                        <a class="btn btn-warning" href='/hikes/<%=@hike.id%>/edit'>Edit Hike</a>
+                        <h2>Reviews:</h2>
+                            <%@hike.reviews.each do |review|%>
+                                <p class="card-text"><strong><%=review.user.email%> says:</strong> <%=review.content%></p>
+                            <%end%>
+                            <br>
+
+                        <h1>Create Review</h1>
+                        <form action="/hikes/<%=@hike.id%>/reviews" method="post">
+                            <label for="content">Review Content:</label><br>
+                            <input type="text" name="content"><br>
+                            <br>
+                            <button type="submit" name="submit" id="submit" value="Submit">Create Review</button>
+                        </form>
+                    
+                    </div>
+
+                    <a type="button" class="btn btn-default" href="/hikes">Back</a>

@@ -1,0 +1,20 @@
+<h1 class="text-center display-4">Hikes</h1>
+<br>
+<a class= "btn btn-primary" href="hikes/new">Add Hike</a>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+            <%@hikes.each do |hike|%>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="<%=hike.img_url%>" alt=""></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><%=hike.name%></h5>
+                    </div>
+                    <a class="btn btn-info" href="/hikes/<%=hike.id%>">Show Hike</a>
+                </div>
+            </div>
+            <%end%>
+    </div>
+</div>

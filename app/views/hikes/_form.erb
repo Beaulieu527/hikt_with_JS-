@@ -1,0 +1,18 @@
+<%= form_for(@hike, class: "form-group") do |f| %>
+    <%= f.label :name %>
+    <%= f.text_area :name, class: "form-control", required: "required" %>
+    <br>
+    <%= f.label :summary %>
+    <%= f.text_field :summary, class: "form-control", required: "required" %>
+    <br>
+    <br>
+    <%= f.label :location %>
+    <%= f.text_field :location, class: "form-control", required: "required" %>
+    <br>
+    <%= f.label :length %>
+    <%= f.text_field :length, class: "form-control", required: "required" %>
+    <br>
+    <%= f.label :img_url %>
+    <%= f.text_field :img_url, class: "form-control", required: "required" %>
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>
