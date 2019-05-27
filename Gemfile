@@ -6,7 +6,9 @@ ruby '2.3.3'
 gem 'devise'
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails'
-
+# User Authentication with Facebook
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
