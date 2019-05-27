@@ -1,6 +1,8 @@
 class Hike < ApplicationRecord
     has_many :reviews
-    has_many :hikes, through: :reviews
+    has_many :users, through: :reviews
+    belongs_to :user, optional: true
+    
 
     def self.import(data)
         trails = data["trails"].map do |hash|

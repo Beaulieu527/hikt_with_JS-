@@ -11,8 +11,11 @@ class HikesController < ApplicationController
     end
     
     def create
-        hike = Hike.create(hike_params)
-        redirect_to hikes_path
+        if @hike = current_user.hikes.create(hike_params)
+            redirect_to hikes_path
+        else 
+            render :new
+        end
     end
     
     def show
@@ -24,26 +27,29 @@ class HikesController < ApplicationController
     end
 
     def update
-        hike = Hike.find(params[:id])
-        hike.update(hike_params)
-        hike.save
-        redirect_to hikes_path
+        @hike = Hike.find(params[:id])
+        if @hike && @hike.user == current_user
+            @hike.update(hike_params)
+            redirect_to hikes_path
+        else
+            render :edit
+        end
     end
 
     def destroy
-        hike = Hike.find(params[:id])
-        if hike.user == current_user
-            hike.destroy
+        @hike = Hike.find(params[:id])
+        if @hike && @hike.user == current_user
+            @hike.destroy
             redirect_to hikes_path
         else 
-            redirect_to root_path
+            redirect_to @hike
         end
     end
 
     private
 
-    def hike_params(*args)
-        params.require(:hike).permit(*args)
-      end
+    def hike_params
+        params.require(:hike).permit(:name, :summary, :location, :length,:img_url)
+    end
  
 end

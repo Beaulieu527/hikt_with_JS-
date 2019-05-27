@@ -5,10 +5,10 @@
 <br>
 <div class="container">
     <div class="row">
-            <%@hikes.each do |hike|%>
+            <%@hikes.order("created_at DESC").each do |hike|%>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100">
-                    <img class="card-img-top" src="<%=hike.img_url%>" alt=""></a>
+                    <img class="card-img-top, width: 700px, height: 400px" src="<%=hike.img_url%>" alt=""></a>
                     <div class="card-body">
                         <h5 class="card-title"><%=hike.name%></h5>
                     </div>
