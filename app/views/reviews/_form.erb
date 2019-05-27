@@ -1,0 +1,7 @@
+
+<%= form_for([hike, review], class: "form-group") do |f| %>
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control", required: "required" %>
+    <br>
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>

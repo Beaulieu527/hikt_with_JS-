@@ -1,0 +1,9 @@
+<h2><%= @hike.name%></h2>
+<br>
+<h3>Created by:<%=@review.user.email%></h3>
+<br>
+<p><%= @review.content%></p>
+<br>
+<%= button_to  "edit", @review, method:"patch" %>
+<br>
+<%= button_to  "delete", @review, method:"delete" %>

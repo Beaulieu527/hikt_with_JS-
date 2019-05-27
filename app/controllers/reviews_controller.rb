@@ -1,38 +1,43 @@
 class ReviewsController < ApplicationController
     before_action :authenticate_user!
- 
+    before_action :set_hike
     def index
-        @reviews = current_website.reviews.all
+        @reviews = set_hike.reviews.all
     end
 
     def new
-        @review = review.new
+        @review = set_hike.reviews.build
 
     end
     
     def create
-        review = review.create(review_params)
-        current_hike.reviews << review
-        redirect_to reviews_path
+        if current_user
+            @review = set_hike.reviews.create(review_params)
+            @review.user = current_user
+            @review.save
+        redirect_to hike_path(@hike)
+        else
+            render :new
+        end
     end
     
     def show
-        @review = id(review)
+        @review = set_hike.reviews.find(params[:id])
     end
 
     def edit
-        @review = id(review)
+        @review = set_hike.reviews.find(params[:id])
     end
 
     def update
-        review = id(review)
-        review.update(review_params)
-        review.save
-        redirect_to reviews_path
+        @review = current_user.reviews.find(params[:id])
+        @review.update(review_params)
+        @review.save
+        redirect_to hike_path(@hike)
     end
 
     def destroy
-        id(current_hike.reviews).destroy
+        current_user.review.destroy
         redirect_to reviews_path
     end
 
@@ -41,4 +46,5 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:content)
     end
+
 end
