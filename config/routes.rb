@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     root 'devise/sessions#new'
   end
  
-  
-  
   resources :hikes do 
     resources :reviews
   end

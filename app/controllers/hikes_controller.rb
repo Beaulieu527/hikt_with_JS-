@@ -2,7 +2,7 @@ class HikesController < ApplicationController
     before_action :authenticate_user! 
  
     def index
-        @hikes = Hike.all
+        @hikes = Hike.search(params[:search])
     end
 
     def new

@@ -13,7 +13,7 @@
                         <br>
                         <a class="btn btn-warning" href=<%= edit_hike_path(@hike) %>>Edit Hike</a>
                         <h2>Reviews:</h2>
-                            <%@hike.reviews.order("created_at DESC").each do |review|%>
+                            <%@hike.reviews.order_by_newest.each do |review|%>
                                 <p class="card-text"><strong><%=review.user.email%> says:</strong> <%=review.content%></p>
                             <%end%>
                             <br>
